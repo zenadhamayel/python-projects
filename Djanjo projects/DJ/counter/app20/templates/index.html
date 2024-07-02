@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter</h1>
+    <h2>you visted the site <span>{{request.session.count}}</span>times</h2>
+    <form action="/count"method=post>
+        {%csrf_token%}
+        <button type="submit" value="add">add two vists</button>
+
+    </form>
+    <form action="/rest"method=post>
+        {%csrf_token%}
+        <button type="submit" value="reset">reset counter</button>
+
+    </form>
+
+    
+</body>
+</html>
