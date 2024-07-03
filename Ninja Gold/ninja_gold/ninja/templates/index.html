@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Your Gold<span>{{gold}}</span></h2>
+    <form action="/process_money" method="post">
+    {% csrf_token  %}
+    <h3>Farm</h3>
+    <h4>10-20 earns</h4>
+    <input type="hidden" name="building" value="farm">
+    <input type="submit" value="find gold">
+    </form>
+
+    <form action="/process_money" method="post">
+    {% csrf_token  %}
+    <h3>Casino</h3>
+    <h4>0-50 earns/takes</h4>
+    <input type="hidden" name="building" value="casino">
+    <input type="submit" value="find gold">
+    </form>
+    <div class="log">
+        <h3>Activities:</h3>
+        <div class="activity-log">
+            <div class="activity-log">
+                {% for activity in request.session.activities %}
+                    {% if 'lost' in activity %}
+                        <p style="color: red;">{{ activity }}</p>
+                    {% else %}
+                        <p style="color: green;">{{ activity }}</p>
+                    {% endif %}
+                {% endfor %}
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>
